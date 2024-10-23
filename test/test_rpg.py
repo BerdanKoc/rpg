@@ -29,6 +29,14 @@ class TestRpg(unittest.TestCase):
             defenseur.recevoir_attaque(attaquant)
         self.assertTrue(defenseur.estMort())
 
+    def test_attaquer_9_fois_ne_tue(self):
+        attaquant = Personnage()
+        defenseur = Personnage()
+
+        for i in range(0,9):
+            defenseur.recevoir_attaque(attaquant)
+        self.assertFalse(defenseur.estMort())
+
 
 if __name__ == '__main__':
     unittest.main()
