@@ -1,5 +1,7 @@
 import unittest
 
+from personnage import Personnage
+
 
 class TestRpg(unittest.TestCase):
     def test_10_hp_initiaux(self):
