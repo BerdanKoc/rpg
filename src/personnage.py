@@ -7,4 +7,4 @@ class Personnage:
         return self.__hp
 
     def recevoir_attaque(self, attaquant):
-        self.__hp = 9
+        self.__hp -= 1
