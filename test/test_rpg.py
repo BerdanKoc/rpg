@@ -42,8 +42,8 @@ class TestRpg(unittest.TestCase):
         defenseur = Personnage()
         for i in range(10):
             defenseur.recevoir_attaque(attaquant)
-        defenseur.recevoir_attaque(attaquant)  # Attaque supplémentaire
-        self.assertEqual(0, defenseur.get_hp())  # HP ne doit pas descendre sous 0
+        defenseur.recevoir_attaque(attaquant)
+        self.assertEqual(0, defenseur.get_hp())
         self.assertTrue(defenseur.estMort())
 
 
