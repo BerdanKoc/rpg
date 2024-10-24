@@ -1,8 +1,2 @@
 # rgp
-Nous avons choisi GitHub Actions pour son intégration native avec GitHub, 
-facilitant l’automatisation des tests unitaires de notre RPG. 
-Il offre une excellente flexibilité, permettant de déclencher des workflows 
-à chaque commit ou pull request. De plus, GitHub Actions est entièrement gratuit 
-pour les projets publics comme le nôtre. Cependant, si nous devions migrer vers 
-une autre plateforme que GitHub, nous serions limités, car GitHub Actions 
-est étroitement lié à cette infrastructure.
+Nous avons choisi GitHub Actions pour son intégration native avec GitHub, facilitant l’automatisation des tests unitaires de notre RPG. Un atout majeur est sa Marketplace riche de milliers d'actions prêtes à l'emploi, qui permettent d'exécuter des tests, gérer les notifications Slack, et bien plus encore. Cela nous fait gagner un temps précieux dans la mise en place des workflows, en réduisant la nécessité de tout configurer manuellement. De plus, GitHub Actions est entièrement gratuit pour les projets publics comme le nôtre, ce qui en fait une solution économique et efficace. Cependant, il existe quelques inconvénients. Les temps d'exécution peuvent être parfois longs à cause de la charge sur les serveurs partagés, ralentissant ainsi le feedback sur les tests. De plus, l'étroite intégration avec GitHub peut devenir limitante si nous devions migrer vers une autre plateforme, compliquant l'adaptation de nos workflows.
