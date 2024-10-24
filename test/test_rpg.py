@@ -37,6 +37,15 @@ class TestRpg(unittest.TestCase):
             defenseur.recevoir_attaque(attaquant)
         self.assertFalse(defenseur.estMort())
 
+    def test_personnage_mort_reste_mort_apres_attaque(self):
+        attaquant = Personnage()
+        defenseur = Personnage()
+        for i in range(10):
+            defenseur.recevoir_attaque(attaquant)
+        defenseur.recevoir_attaque(attaquant)  # Attaque supplémentaire
+        self.assertEqual(0, defenseur.get_hp())  # HP ne doit pas descendre sous 0
+        self.assertTrue(defenseur.estMort())
+
 
 if __name__ == '__main__':
     unittest.main()
