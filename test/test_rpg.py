@@ -1,6 +1,11 @@
 import unittest
+import sys
+import os
 
-from personnage import Personnage
+# Ajouter le dossier racine au PYTHONPATH
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from src.personnage import Personnage
 
 
 class TestRpg(unittest.TestCase):
