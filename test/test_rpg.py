@@ -1,6 +1,6 @@
 import unittest
 
-from personnage import Personnage
+from src.personnage import Personnage
 
 
 class TestRpg(unittest.TestCase):
@@ -45,6 +45,12 @@ class TestRpg(unittest.TestCase):
         defenseur.recevoir_attaque(attaquant)
         self.assertEqual(0, defenseur.get_hp())
         self.assertTrue(defenseur.estMort())
+
+    def test_regeneration_hp(self):
+        personnage = Personnage()
+        personnage.recevoir_attaque(None)  # Réduit les HP de 1
+        personnage.regenerer(2)  # Régénère 2 HP
+        self.assertEqual(10, personnage.get_hp())
 
 
 if __name__ == '__main__':
