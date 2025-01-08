@@ -50,8 +50,9 @@ jobs:
         run: |
           branch_name="failures/$(date +%s)"
           git checkout -b $branch_name
+          git add .
+          git commit --allow-empty -m "test: failing tests"
           git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git $branch_name
-          git reset HEAD~1
           git checkout dev
           git push origin dev --force
           exit 1

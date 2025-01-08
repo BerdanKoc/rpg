@@ -57,6 +57,16 @@ class TestRpg(unittest.TestCase):
         personnage.regenerer(2)  # Régénère 2 HP
         self.assertEqual(10, personnage.get_hp())
 
+    def test_armure_reduit_degats(self):
+        attaquant = Personnage()
+        defenseur = Personnage()
+        
+        defenseur.equiper_armure(2)  # Armure qui réduit de 2 les dégâts
+        defenseur.recevoir_attaque(attaquant)
+        
+        # L'armure devrait absorber tout le dégât (1 point)
+        self.assertEqual(10, defenseur.get_hp())
+
 
 if __name__ == '__main__':
     unittest.main()
