@@ -51,6 +51,15 @@ class TestRpg(unittest.TestCase):
         self.assertEqual(0, defenseur.get_hp())
         self.assertTrue(defenseur.estMort())
 
+    def test_regeneration_hp(self):
+        personnage = Personnage()
+
+        # On s'attend à ce que la méthode `regenerer` augmente les HP
+        personnage.recevoir_attaque(None)  # Réduit les HP de 1
+        personnage.regenerer(2)  # Cette méthode n'existe pas encore
+        self.assertEqual(10, personnage.get_hp())
+
+
 
 if __name__ == '__main__':
     unittest.main()
