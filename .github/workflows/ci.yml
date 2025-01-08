@@ -48,12 +48,10 @@ jobs:
       - name: Handle failure
         if: ${{ failure() }}
         run: |
-          git stash -u  # Sauvegarde les modifications non commitées
           branch_name="failures/$(date +%s)"
           git checkout -b $branch_name
-          git stash pop  # Récupère les modifications
           git add .
-          git commit -m "test: failing tests"
+          git commit --allow-empty -m "test: failing tests"
           git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git $branch_name
           git checkout dev
           git push origin dev --force
