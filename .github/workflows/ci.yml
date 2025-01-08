@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -31,11 +34,18 @@ jobs:
         if: ${{ success() }}
         run: echo "Tests succeeded!"
 
+      - name: Configure Git
+        if: ${{ failure() }}
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
       - name: Handle failure
         if: ${{ failure() }}
         run: |
-          git checkout -b failures/$(date +%s)
-          git push origin failures/$(date +%s)
+          branch_name="failures/$(date +%s)"
+          git checkout -b $branch_name
+          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git $branch_name
           git reset HEAD~1
           git checkout dev
           git push origin dev --force
@@ -49,6 +59,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
       - name: Promote to master
         run: |
