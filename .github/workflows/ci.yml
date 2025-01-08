@@ -1,0 +1,57 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+
+      - name: Run tests
+        run: |
+          python -m pytest test/
+
+      - name: Check test results
+        if: ${{ success() }}
+        run: echo "Tests succeeded!"
+
+      - name: Handle failure
+        if: ${{ failure() }}
+        run: |
+          git checkout -b failures/$(date +%s)
+          git push origin failures/$(date +%s)
+          git reset HEAD~1
+          git checkout dev
+          git push origin dev --force
+          exit 1
+
+  promote-to-master:
+    needs: build-and-test
+    if: ${{ success() }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Promote to master
+        run: |
+          git checkout main-rpg_base
+          git merge --ff-only dev
+          git push origin main-rpg_base
