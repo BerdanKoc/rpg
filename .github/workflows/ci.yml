@@ -71,5 +71,5 @@ jobs:
       - name: Promote to master
         run: |
           git checkout main-rpg_base
-          git merge --ff-only dev
+          git merge dev -m "Merge dev into main-rpg_base"
           git push origin main-rpg_base
