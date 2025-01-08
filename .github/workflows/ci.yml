@@ -25,7 +25,7 @@ jobs:
 
       - name: Run tests
         run: |
-          python -m unittest discover -v
+          python -m pytest test/
 
       - name: Check test results
         if: ${{ success() }}
