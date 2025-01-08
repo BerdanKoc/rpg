@@ -2,13 +2,15 @@ class Personnage:
 
     def __init__(self):
         self.hp = 10
+        self.armure = 0
 
     def get_hp(self):
         return self.hp
 
     def recevoir_attaque(self, attaquant):
         if not self.estMort():
-            self.hp -= 1
+            degats = max(1 - self.armure, 0)  # Les dégâts ne peuvent pas être négatifs
+            self.hp -= degats
 
     def estMort(self):
         return self.hp <= 0
@@ -16,3 +18,6 @@ class Personnage:
     def regenerer(self, montant):
         if not self.estMort():
             self.hp = min(10, self.hp + montant)
+
+    def equiper_armure(self, valeur):
+        self.armure = valeur
