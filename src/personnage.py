@@ -1,18 +1,18 @@
 class Personnage:
 
     def __init__(self):
-        self.__hp = 10
-        self.__est_mort = False
+        self.hp = 10
 
     def get_hp(self):
-        return self.__hp
+        return self.hp
 
     def recevoir_attaque(self, attaquant):
-        if not self.__est_mort:
-            self.__hp -= 1
-            if self.__hp <= 0:
-                self.__hp = 0
-                self.__est_mort = True
+        if not self.estMort():
+            self.hp -= 1
 
     def estMort(self):
-        return self.__est_mort
+        return self.hp <= 0
+
+    def regenerer(self, montant):
+        if not self.estMort():
+            self.hp = min(10, self.hp + montant)
