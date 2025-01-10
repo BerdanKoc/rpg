@@ -101,6 +101,15 @@ class TestRpg(unittest.TestCase):
         # L'armure devrait être limitée à 10
         self.assertEqual(10, personnage.armure)
 
+    def test_armure_ne_peut_pas_etre_negative(self):
+        personnage = Personnage()
+        
+        # Essayer d'équiper une armure négative
+        personnage.equiper_armure(-5)
+        
+        # L'armure ne devrait pas être négative (minimum 0)
+        self.assertEqual(0, personnage.armure)
+
 
 if __name__ == '__main__':
     unittest.main()
