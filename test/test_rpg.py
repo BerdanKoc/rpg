@@ -92,6 +92,15 @@ class TestRpg(unittest.TestCase):
         # L'armure ne devrait pas être équipée (devrait rester à 0)
         self.assertEqual(0, personnage.armure)
 
+    def test_armure_maximum_10(self):
+        personnage = Personnage()
+        
+        # Essayer d'équiper une armure supérieure à 10
+        personnage.equiper_armure(15)
+        
+        # L'armure devrait être limitée à 10
+        self.assertEqual(10, personnage.armure)
+
 
 if __name__ == '__main__':
     unittest.main()
