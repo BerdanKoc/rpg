@@ -18,6 +18,8 @@ class Personnage:
     def regenerer(self, montant):
         if not self.estMort():
             self.hp = min(10, self.hp + montant)
+        # Si le personnage est mort, ne rien faire
 
     def equiper_armure(self, valeur):
-        self.armure = valeur
+        if not self.estMort():
+            self.armure = valeur
