@@ -110,6 +110,17 @@ class TestRpg(unittest.TestCase):
         # L'armure ne devrait pas être négative (minimum 0)
         self.assertEqual(0, personnage.armure)
 
+    def test_force_augmente_degats(self):
+        attaquant = Personnage()
+        defenseur = Personnage()
+        
+        # Augmenter la force de l'attaquant
+        attaquant.set_force(3)
+        
+        # Une attaque devrait faire 3 points de dégâts
+        defenseur.recevoir_attaque(attaquant)
+        self.assertEqual(7, defenseur.get_hp())  # 10 HP - 3 dégâts
+
 
 if __name__ == '__main__':
     unittest.main()
