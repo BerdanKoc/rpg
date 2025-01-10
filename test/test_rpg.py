@@ -80,6 +80,18 @@ class TestRpg(unittest.TestCase):
         self.assertEqual(0, personnage.get_hp())
         self.assertTrue(personnage.estMort())
 
+    def test_personnage_mort_ne_peut_pas_equiper_armure(self):
+        personnage = Personnage()
+        # Tuer le personnage
+        for i in range(10):
+            personnage.recevoir_attaque(None)
+            
+        # Essayer d'équiper une armure
+        personnage.equiper_armure(5)
+        
+        # L'armure ne devrait pas être équipée (devrait rester à 0)
+        self.assertEqual(0, personnage.armure)
+
 
 if __name__ == '__main__':
     unittest.main()
