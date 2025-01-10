@@ -67,6 +67,19 @@ class TestRpg(unittest.TestCase):
         # L'armure devrait absorber tout le dégât (1 point)
         self.assertEqual(10, defenseur.get_hp())
 
+    def test_personnage_mort_ne_peut_pas_regenerer(self):
+        personnage = Personnage()
+        # Tuer le personnage
+        for i in range(10):
+            personnage.recevoir_attaque(None)
+        
+        # Essayer de régénérer
+        personnage.regenerer(5)
+        
+        # Le personnage devrait rester mort avec 0 HP
+        self.assertEqual(0, personnage.get_hp())
+        self.assertTrue(personnage.estMort())
+
 
 if __name__ == '__main__':
     unittest.main()
