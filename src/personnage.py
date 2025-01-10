@@ -22,4 +22,4 @@ class Personnage:
 
     def equiper_armure(self, valeur):
         if not self.estMort():
-            self.armure = valeur
+            self.armure = min(10, valeur)  # Limite l'armure à 10
