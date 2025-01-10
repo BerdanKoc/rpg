@@ -10,7 +10,7 @@ class Personnage:
 
     def recevoir_attaque(self, attaquant):
         if not self.estMort():
-            degats = max(attaquant.force - self.armure, 0)
+            degats = 1 if attaquant is None else max(attaquant.force - self.armure, 0)
             self.hp -= degats
 
     def estMort(self):
