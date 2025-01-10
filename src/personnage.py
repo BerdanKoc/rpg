@@ -3,13 +3,14 @@ class Personnage:
     def __init__(self):
         self.hp = 10
         self.armure = 0
+        self.force = 1  # Force de base
 
     def get_hp(self):
         return self.hp
 
     def recevoir_attaque(self, attaquant):
         if not self.estMort():
-            degats = max(1 - self.armure, 0)  # Les dégâts ne peuvent pas être négatifs
+            degats = 1 if attaquant is None else max(attaquant.force - self.armure, 0)
             self.hp -= degats
 
     def estMort(self):
@@ -23,3 +24,6 @@ class Personnage:
     def equiper_armure(self, valeur):
         if not self.estMort():
             self.armure = max(0, min(10, valeur))  # Limite l'armure entre 0 et 10
+
+    def set_force(self, valeur):
+        self.force = max(1, min(10, valeur))  # Force entre 1 et 10
