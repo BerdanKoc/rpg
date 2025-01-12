@@ -135,6 +135,12 @@ class TestRpg(unittest.TestCase):
         
         # Vérifier que le défenseur a perdu des HP
         self.assertLess(defenseur.get_hp(), 10)
+    def test_combat_tours_multiples(self):
+        attaquant = Personnage()
+        defenseur = Personnage()
+
+        attaquant.combattre(defenseur)
+        self.assertTrue(attaquant.estMort() or defenseur.estMort())
 
 
 if __name__ == '__main__':
