@@ -10,15 +10,18 @@ class Personnage:
 
     def recevoir_attaque(self, attaquant):
         if not self.estMort():
+            print(f"Avant attaque : HP={self.hp}, Armure={self.armure}, Force attaquant={attaquant.force}")
             degats = 1 if attaquant is None else max(attaquant.force - self.armure, 0)
 
-            
             if self.armure >= 10:  
                 degats = degats // 2  
                 self.armure -= 10  
+                print(f"Dégâts réduits : {degats}, Armure après défense : {self.armure}")
 
-            
             self.hp -= degats
+            if self.hp < 0:
+                self.hp = 0
+            print(f"Après attaque : HP={self.hp}, Armure={self.armure}")
     def estMort(self):
         return self.hp <= 0
 
