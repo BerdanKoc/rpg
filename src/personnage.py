@@ -34,3 +34,5 @@ class Personnage:
             if autre_personnage.estMort():
                 break
             self.recevoir_attaque(autre_personnage)
+    def attaquer_special(self, autre_personnage):
+        pass  
