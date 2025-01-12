@@ -12,6 +12,8 @@ class Personnage:
         if not self.estMort():
             degats = 1 if attaquant is None else max(attaquant.force - self.armure, 0)
             self.hp -= degats
+            if self.armure > 10: 
+                self.armure -= 10  
 
     def estMort(self):
         return self.hp <= 0
@@ -41,3 +43,6 @@ class Personnage:
             autre_personnage.recevoir_attaque(self)
             autre_personnage.hp -= self.force  
             self.hp -= 2
+    def defendre(self):
+        if not self.estMort():
+            self.armure += 10  
