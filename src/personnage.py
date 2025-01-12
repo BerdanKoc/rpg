@@ -12,10 +12,12 @@ class Personnage:
         if not self.estMort():
             degats = 1 if attaquant is None else max(attaquant.force - self.armure, 0)
 
+            
             if self.armure >= 10:  
                 degats = degats // 2  
                 self.armure -= 10  
 
+            
             self.hp -= degats
     def estMort(self):
         return self.hp <= 0
