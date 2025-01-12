@@ -27,6 +27,10 @@ class Personnage:
 
     def set_force(self, valeur):
         self.force = max(1, min(10, valeur))  # Force entre 1 et 10
+
     def combattre(self, autre_personnage):
-        if not self.estMort() and not autre_personnage.estMort():
+        while not self.estMort() and not autre_personnage.estMort():
             autre_personnage.recevoir_attaque(self)
+            if autre_personnage.estMort():
+                break
+            self.recevoir_attaque(autre_personnage)
