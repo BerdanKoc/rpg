@@ -35,4 +35,7 @@ class Personnage:
                 break
             self.recevoir_attaque(autre_personnage)
     def attaquer_special(self, autre_personnage):
-        pass  
+        if not self.estMort():
+            degats = self.force * 2  
+            autre_personnage.recevoir_attaque(self)  
+            self.hp -= 2  
