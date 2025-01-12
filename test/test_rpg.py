@@ -150,6 +150,16 @@ class TestRpg(unittest.TestCase):
         self.assertEqual(defenseur.get_hp(), 8)  
 
         self.assertEqual(attaquant.get_hp(), 8)  
+    def test_defendre_reduit_degats(self):
+        attaquant = Personnage()
+        defenseur = Personnage()
+
+        defenseur.defendre()
+
+        attaquant.set_force(5)
+        defenseur.recevoir_attaque(attaquant)
+
+        self.assertEqual(defenseur.get_hp(), 8)  
 
 
 
