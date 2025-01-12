@@ -126,6 +126,15 @@ class TestRpg(unittest.TestCase):
         
         attaquant.combattre(defenseur)
         self.assertTrue(True)
+    def test_combat_reduit_hp(self):
+        attaquant = Personnage()
+        defenseur = Personnage()
+        
+        # Simuler un combat
+        attaquant.combattre(defenseur)
+        
+        # Vérifier que le défenseur a perdu des HP
+        self.assertLess(defenseur.get_hp(), 10)
 
 
 if __name__ == '__main__':
