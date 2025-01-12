@@ -27,3 +27,5 @@ class Personnage:
 
     def set_force(self, valeur):
         self.force = max(1, min(10, valeur))  # Force entre 1 et 10
+    def combattre(self, autre_personnage):
+        pass 
