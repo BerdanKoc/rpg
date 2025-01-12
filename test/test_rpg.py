@@ -121,6 +121,13 @@ class TestRpg(unittest.TestCase):
         defenseur.recevoir_attaque(attaquant)
         self.assertEqual(7, defenseur.get_hp())  # 10 HP - 3 dégâts
 
+    def test_initier_combat(self):
+        attaquant = Personnage()
+        defenseur = Personnage()
+        
+        attaquant.combattre(defenseur)
+        self.assertTrue(True)  
+
 
 if __name__ == '__main__':
     unittest.main()
