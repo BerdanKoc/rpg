@@ -141,6 +141,16 @@ class TestRpg(unittest.TestCase):
 
         attaquant.combattre(defenseur)
         self.assertTrue(attaquant.estMort() or defenseur.estMort())
+    def test_attaquer_special_reduit_hp_attaquant_et_inflige_degats_doubles(self):
+        attaquant = Personnage()
+        defenseur = Personnage()
+
+        # Lancer une attaque spéciale
+        attaquant.attaquer_special(defenseur)
+        self.assertEqual(defenseur.get_hp(), 8)  
+
+        self.assertEqual(attaquant.get_hp(), 8)  
+
 
 
 if __name__ == '__main__':
